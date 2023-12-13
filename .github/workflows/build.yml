@@ -30,3 +30,28 @@ jobs:
         name: MacOS binary
         path: |
           build/QT6HW
+
+  windows:
+    runs-on: windows-2022
+    name: Windows
+    steps:
+    - name: 🧰 Checkout
+      uses: actions/checkout@v3
+
+    - name: install Qt 6
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: "6.*"
+    
+    - name: Build project
+      run: |
+        cmake -B build
+        cmake --build build -j 4
+
+    - name: Upload binary
+      uses: actions/upload-artifact@v3
+      with:
+        if-no-files-found: error
+        name: Windows binary
+        path: |
+          build/Debug/QT6HW.exe
