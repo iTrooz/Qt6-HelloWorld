@@ -55,3 +55,22 @@ jobs:
         name: Windows binary
         path: |
           build/Debug/QT6HW.exe
+
+  linux:
+    runs-on: ubuntu-22.04
+    name: Windows
+    steps:
+    - name: 🧰 Checkout
+      uses: actions/checkout@v3
+
+    - name: Build project using docker
+      run: |
+        docker buildx build . -f dist/linux.Dockerfile --progress=plain --output out
+
+    - name: Upload binary
+      uses: actions/upload-artifact@v3
+      with:
+        if-no-files-found: error
+        name: Linux binary
+        path: |
+          out/QT6HW
