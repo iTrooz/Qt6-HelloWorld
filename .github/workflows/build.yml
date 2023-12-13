@@ -1,0 +1,32 @@
+name: Build
+
+on:
+  push:
+    branches: ["*"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+
+  macos:
+    runs-on: macos-12
+    name: MacOS
+    steps:
+    - name: 🧰 Checkout
+      uses: actions/checkout@v3
+
+    - name: install Qt 6
+      run: brew install qt@6
+    
+    - name: Build project
+      run: |
+        cmake -B build
+        cmake --build build -j 4
+
+    - name: Upload binary
+      uses: actions/upload-artifact@v3
+      with:
+        if-no-files-found: error
+        name: MacOS binary
+        path: |
+          build/QT6HW
