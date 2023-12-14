@@ -26,6 +26,10 @@ jobs:
       run: |
         docker buildx build . -f dist/web.Dockerfile --progress=plain --output out
 
+    - name: 🔨 Change name of html page to index.html
+      run: |
+        mv out/QT6HW.html out/index.html
+
     - name: 🔨 Fix permissions
       run: |
         chmod -c -R +rX "out/" | while read line; do
