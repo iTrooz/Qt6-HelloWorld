@@ -58,7 +58,7 @@ jobs:
 
   linux:
     runs-on: ubuntu-22.04
-    name: Windows
+    name: Linux
     steps:
     - name: 🧰 Checkout
       uses: actions/checkout@v3
