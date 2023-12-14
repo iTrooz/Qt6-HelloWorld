@@ -1,4 +1,4 @@
-Simple Qt6 hello world
+Simple Qt6 hello world, for Linux, Windows, MacOS, and WebAssembly
 
 Example command to compile and run:
 ```
