@@ -1,6 +1,5 @@
 FROM ubuntu:22.04
 
-
 RUN apt update
 RUN apt install -y qt6-base-dev
 RUN apt install -y cmake make gcc g++
