@@ -1,0 +1,27 @@
+name: Alternative builds for the web
+
+on:
+  push:
+    branches: ["*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  pages: write
+  id-token: write
+  actions: write
+
+jobs:
+
+  web2:
+    runs-on: ubuntu-22.04
+    name: web2.Dockerfile
+    steps:
+    - name: 🧰 Checkout
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - name: 🛠️ Build using docker
+      run: |
+        docker buildx build . -f dist/web2.Dockerfile --progress=plain --output out
