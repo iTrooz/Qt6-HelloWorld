@@ -4,6 +4,3 @@ Example command to compile and run:
 ```
 clear && rm -rf build && cmake -B build && cmake --build build -j 4 && build/QT6HW
 ```
-
-
-Adapted from https://github.com/bertuz/qt6-static-helloworld
